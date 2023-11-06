@@ -9,6 +9,16 @@ class employeeClass:
         self.root.title("Inventory Management System | Developed by Kishan and Abhikash")
         self.root.config(bg="White")
         self.root.focus_force()
+        #*******Variables******
+        self.var_emp_id=StringVar()
+        self.var_gender=StringVar()
+        self.var_contact=StringVar()
+        self.var_name=StringVar()
+        self.var_dob=StringVar()
+        self.var_doj=StringVar()
+        self.var_email=StringVar()
+        self.var_pass=StringVar()
+        self.var_utype=StringVar()
 
         #====searchFrame=====
         SearchFrame=LabelFrame(self.root,text="Search Employee",bg="White")
