@@ -10,6 +10,9 @@ class employeeClass:
         self.root.config(bg="White")
         self.root.focus_force()
         #*******Variables******
+        self.var_searchby=StringVar()
+        self.var_searchtxt=StringVar()
+
         self.var_emp_id=StringVar()
         self.var_gender=StringVar()
         self.var_contact=StringVar()
@@ -29,11 +32,20 @@ class employeeClass:
         cmb_search.place(x=10,y=10,width=180)
         cmb_search.current(0)
 
-        txt_search=Entry(SearchFrame,font=("goudy old style",15),bg="lightyellow").place(x=200,y=10)
-        btn_search=Button(SearchFrame,text="Search",font=("goudy old style",15),bg="#4caf49",fg="white",cursor="hand2").place(x=410,y=10,width=140,height=30)
+        txt_search=Entry(SearchFrame,textvariable=self.var_searchby,font=("goudy old style",15),bg="lightyellow").place(x=200,y=10)
+        btn_search=Button(SearchFrame,textvariable=self.var_searchby,text="Search",font=("goudy old style",15),bg="#4caf49",fg="white",cursor="hand2").place(x=410,y=10,width=140,height=30)
 
         #====text====
         title=Label(self.root,text="Employee Details",font=("Goudy old style",15),bg ="blue",fg="white").place(x=50,y=100,width=1000)
+        #*****Content*****
+        label_empid=Label(self.root,text="Emp ID",font=("Goudy old style",15),bg ="White").place(x=50,y=150)
+        label_gender=Label(self.root,text="Gender",font=("Goudy old style",15),bg ="White").place(x=550,y=150)
+        label_contact=Label(self.root,text="Contact",font=("Goudy old style",15),bg ="White").place(x=950,y=150)
+
+        txt_empid=Entry(self.root,textvariable=self.var_emp_id,font=("Goudy old style",15),bg ="White").place(x=50,y=150)
+        txt_gender=Entry(self.root,textvariable=self.var_gender,font=("Goudy old style",15),bg ="White").place(x=550,y=150)
+        txt_contact=Entry(self.root,textvariable=self.var_contact,font=("Goudy old style",15),bg ="White").place(x=950,y=150)
+
 
 if __name__=="__main__":
 
