@@ -52,6 +52,7 @@ class employeeClass:
         txt_contact=Entry(self.root,textvariable=self.var_contact,font=("Goudy old style",15),bg ="White").place(x=950,y=150,width=180)
 
 #for maintaining streak
+#for maintaining streak
 
 
 if __name__=="__main__":
