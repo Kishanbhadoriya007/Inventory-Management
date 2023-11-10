@@ -22,6 +22,7 @@ class employeeClass:
         self.var_email=StringVar()
         self.var_pass=StringVar()
         self.var_utype=StringVar()
+        self.var_salary=StringVar()
 
         #====searchFrame=====
         SearchFrame=LabelFrame(self.root,text="Search Employee",bg="White")
@@ -37,19 +38,51 @@ class employeeClass:
 
         #====text====
         title=Label(self.root,text="Employee Details",font=("Goudy old style",15),bg ="blue",fg="white").place(x=50,y=100,width=1000)
+
         #*****Content*****
+        #*****Row1*******
         lbl_empid=Label(self.root,text="Emp ID",font=("Goudy old style",15),bg ="White").place(x=50,y=150)
         lbl_gender=Label(self.root,text="Gender",font=("Goudy old style",15),bg ="White").place(x=430,y=150)
+        lbl_contact=Label(self.root,text="Contact",font=("Goudy old style",15),bg ="White").place(x=800,y=150)
 
         cmb_gender=ttk.Combobox(self.root,textvariable=self.var_gender, values=("Select","male","female","other"),state='readonly',justify=CENTER,font=("times new roman",15))
         cmb_gender.place(x=500,y=150,width=180)
         cmb_gender.current(0)
 
-        lbl_contact=Label(self.root,text="Contact",font=("Goudy old style",15),bg ="White").place(x=800,y=150)
-
         txt_empid=Entry(self.root,textvariable=self.var_emp_id,font=("Goudy old style",15),bg ="lightblue").place(x=120,y=150,width=180)
         txt_contact=Entry(self.root,textvariable=self.var_contact,font=("Goudy old style",15),bg="lightblue").place(x=870,y=150,width=180)
 
+        #******Row2*******
+
+        lbl_name=Label(self.root,text="Name",font=("Goudy old style",15),bg ="White").place(x=50,y=190)
+        lbl_dob=Label(self.root,text="D.O.B",font=("Goudy old style",15),bg ="White").place(x=430,y=190)
+        lbl_doj=Label(self.root,text="D.O.J",font=("Goudy old style",15),bg ="White").place(x=800,y=190)
+
+        txt_name=Entry(self.root,textvariable=self.var_name,font=("Goudy old style",15),bg ="lightblue").place(x=120,y=190,width=180)
+        txt_dob=Entry(self.root,textvariable=self.var_dob,font=("Goudy old style",15),bg="lightblue").place(x=500,y=190,width=180)
+        txt_doj=Entry(self.root,textvariable=self.var_doj,font=("Goudy old style",15),bg="lightblue").place(x=870,y=190,width=180)
+
+        #******Row3*******
+
+        lbl_email=Label(self.root,text="Email",font=("Goudy old style",15),bg ="White").place(x=50,y=230)
+        lbl_pass=Label(self.root,text="Password",font=("Goudy old style",15),bg ="White").place(x=420,y=230)
+        lbl_utype=Label(self.root,text="User Type",font=("Goudy old style",15),bg ="White").place(x=780,y=230)
+
+        txt_email=Entry(self.root,textvariable=self.var_email,font=("Goudy old style",15),bg ="lightblue").place(x=120,y=230,width=180)
+        txt_pass=Entry(self.root,textvariable=self.var_pass,font=("Goudy old style",15),bg="lightblue").place(x=500,y=230,width=180)
+        txt_utype=Entry(self.root,textvariable=self.var_utype,font=("Goudy old style",15),bg="lightblue").place(x=870,y=230,width=180)
+        
+        cmb_utype=ttk.Combobox(self.root,textvariable=self.var_utype, values=("Admin","Employess"),state='readonly',justify=CENTER,font=("times new roman",15))
+        cmb_utype.place(x=870,y=230,width=180)
+        cmb_utype.current(0)
+
+         #******Row3*******
+
+        lbl_address=Label(self.root,text="Address",font=("Goudy old style",15),bg ="White").place(x=50,y=270)
+        lbl_salary=Label(self.root,text="Salary",font=("Goudy old style",15),bg ="White").place(x=420,y=270)
+
+        self.xt_address=Text(self.root,font=("Goudy old style",15),bg ="lightblue").place(x=120,y=270,width=180)
+        txt_salary=Entry(self.root,textvariable=self.var_salary,font=("Goudy old style",15),bg="lightblue").place(x=500,y=230,width=180)
 
 
 
