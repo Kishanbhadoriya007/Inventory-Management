@@ -34,6 +34,8 @@ class employeeClass:
         cmb_search.current(0)
 
         txt_search=Entry(SearchFrame,textvariable=self.var_searchtxt,font=("goudy old style",15),bg="lightblue").place(x=200,y=10)
+
+        #*****button*****
         btn_search=Button(SearchFrame,textvariable=self.var_searchby,font=("goudy old style",15),bg="#4caf49",fg="white",cursor="hand2").place(x=410,y=10,width=140,height=30)
 
         #====text====
@@ -76,13 +78,21 @@ class employeeClass:
         cmb_utype.place(x=870,y=230,width=180)
         cmb_utype.current(0)
 
-         #******Row3*******
+         #******Row4*******
 
         lbl_address=Label(self.root,text="Address",font=("Goudy old style",15),bg ="White").place(x=50,y=270)
-        lbl_salary=Label(self.root,text="Salary",font=("Goudy old style",15),bg ="White").place(x=420,y=270)
+        lbl_salary=Label(self.root,text="Salary",font=("Goudy old style",15),bg ="White").place(x=500,y=270)
 
-        self.xt_address=Text(self.root,font=("Goudy old style",15),bg ="lightblue").place(x=120,y=270,width=180)
-        txt_salary=Entry(self.root,textvariable=self.var_salary,font=("Goudy old style",15),bg="lightblue").place(x=500,y=230,width=180)
+        self.txt_address=Text(self.root,font=("Goudy old style",15),bg ="lightblue")
+        self.txt_address.place(x=120,y=270,width=300,height=60)
+        txt_salary=Entry(self.root,textvariable=self.var_salary,font=("Goudy old style",15),bg="lightblue").place(x=580,y=270,width=200)
+
+        #******Buttons******
+        btn_add=Button(self.root,text="Save",font=("goudy old style",15),bg="blue",fg="white",cursor="hand2").place(x=500,y=305,width=110,height=30)
+        btn_update=Button(self.root,text="update",font=("goudy old style",15),bg="green",fg="white",cursor="hand2").place(x=620,y=305,width=110,height=30)
+        btn_delete=Button(self.root,text="Delete",font=("goudy old style",15),bg="red",fg="white",cursor="hand2").place(x=740,y=305,width=110,height=30)
+        btn_clear=Button(self.root,text="Clear",font=("goudy old style",15),bg="grey",fg="white",cursor="hand2").place(x=860,y=305,width=110,height=30)
+      
 
 
 
