@@ -92,6 +92,12 @@ class employeeClass:
         btn_update=Button(self.root,text="update",font=("goudy old style",15),bg="green",fg="white",cursor="hand2").place(x=620,y=305,width=110,height=30)
         btn_delete=Button(self.root,text="Delete",font=("goudy old style",15),bg="red",fg="white",cursor="hand2").place(x=740,y=305,width=110,height=30)
         btn_clear=Button(self.root,text="Clear",font=("goudy old style",15),bg="grey",fg="white",cursor="hand2").place(x=860,y=305,width=110,height=30)
+
+        #*****Details of employees****
+
+        emp_frame=Frame(self.root,bd=3,relief=RIDGE)
+        emp_frame.place(x=0,y=350,relwidth=1,height=150)
+        
       
 
 
