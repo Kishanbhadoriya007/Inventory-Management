@@ -97,7 +97,13 @@ class employeeClass:
 
         emp_frame=Frame(self.root,bd=3,relief=RIDGE)
         emp_frame.place(x=0,y=350,relwidth=1,height=150)
-        
+
+        scrolly=Scrollbar(emp_frame,orient=VERTICAL)
+        scrollx=Scrollbar(emp_frame,orient=HORIZONTAL)
+
+        self.EmployeeTable=ttk.Treeview(emp_frame,columns=("eid","name","email","gender","contact","dob","doj","pass","utype","address","salary"))
+        self.EmployeeTable.pack(fill=BOTH,expand=1)
+        ̥
       
 
 
