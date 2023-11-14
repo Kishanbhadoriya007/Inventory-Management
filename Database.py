@@ -6,3 +6,4 @@ def create_db():
     con.commit()
 
 create_db()
+#cd Git_and_github cd Inventory-Management 
