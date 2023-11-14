@@ -1,6 +1,7 @@
 from tkinter import*
 from PIL import Image, ImageTk #pip install pillow
-from tkinter import ttk
+from tkinter import ttk,messagebox
+import sqlite3
 
 class employeeClass:
     def __init__(self, root):
@@ -133,7 +134,17 @@ class employeeClass:
         self.EmployeeTable.column("salary", width=200)
 
         self.EmployeeTable.pack(fill=BOTH,expand=1)
-      
+
+#*************Functions*************************
+    def add(self):
+        con=sqlite3.connect(database=r'ims.db')
+        cur=con.cursor
+        try:
+            if self.var_emp_id.get()=="" or self.var_name.get()=="":
+                messagebox.showerror("Error","Employee ID must be required")
+
+        except Exception as ex:
+            messagebox.showerror("Error",f"Error due to : {str(ex)}")
 
 
 
