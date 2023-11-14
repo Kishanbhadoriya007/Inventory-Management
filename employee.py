@@ -89,7 +89,7 @@ class employeeClass:
         txt_salary=Entry(self.root,textvariable=self.var_salary,font=("Goudy old style",15),bg="lightblue").place(x=580,y=270,width=200)
 
         #******Buttons******
-        btn_add=Button(self.root,text="Save",font=("goudy old style",15),bg="blue",fg="white",cursor="hand2").place(x=500,y=305,width=110,height=30)
+        btn_add=Button(self.root,text="Save",command=self.add,font=("goudy old style",15),bg="blue",fg="white",cursor="hand2").place(x=500,y=305,width=110,height=30)
         btn_update=Button(self.root,text="update",font=("goudy old style",15),bg="green",fg="white",cursor="hand2").place(x=620,y=305,width=110,height=30)
         btn_delete=Button(self.root,text="Delete",font=("goudy old style",15),bg="red",fg="white",cursor="hand2").place(x=740,y=305,width=110,height=30)
         btn_clear=Button(self.root,text="Clear",font=("goudy old style",15),bg="grey",fg="white",cursor="hand2").place(x=860,y=305,width=110,height=30)
@@ -140,8 +140,10 @@ class employeeClass:
         con=sqlite3.connect(database=r'ims.db')
         cur=con.cursor
         try:
-            if self.var_emp_id.get()=="" or self.var_name.get()=="":
-                messagebox.showerror("Error","Employee ID must be required")
+            if self.var_emp_id.get()=="":
+                messagebox.showerror("Error","Employee ID must be required",parent=self.root)
+            else:
+                cur.execute("Select * from employee where eid=?",(self.var_emp_id.get(),))
 
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to : {str(ex)}")
