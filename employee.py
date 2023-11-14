@@ -130,7 +130,7 @@ class employeeClass:
         self.EmployeeTable.column("pass", width=100)
         self.EmployeeTable.column("utype", width=100)
         self.EmployeeTable.column("address", width=100)
-        self.EmployeeTable.column("salary", width=100)
+        self.EmployeeTable.column("salary", width=200)
 
         self.EmployeeTable.pack(fill=BOTH,expand=1)
       
