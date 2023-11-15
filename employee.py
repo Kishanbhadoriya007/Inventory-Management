@@ -144,6 +144,9 @@ class employeeClass:
                 messagebox.showerror("Error","Employee ID must be required",parent=self.root)
             else:
                 cur.execute("Select * from employee where eid=?",(self.var_emp_id.get(),))
+                row=cur.fetchone()
+                if row!=None:
+                    messagebox.showerror("Error")
 
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to : {str(ex)}")
