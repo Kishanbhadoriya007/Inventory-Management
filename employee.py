@@ -138,7 +138,7 @@ class employeeClass:
 #*************Functions*************************
     def add(self):
         con=sqlite3.connect(database=r'ims.db')
-        cur=con.cursor
+        cur=con.cursor();
         try:
             if self.var_emp_id.get()=="":
                 messagebox.showerror("Error","Employee ID must be required",parent=self.root)
@@ -151,7 +151,6 @@ class employeeClass:
 
 
 if __name__=="__main__":
-
     root = Tk()
     obj = employeeClass(root)
     root.mainloop()
