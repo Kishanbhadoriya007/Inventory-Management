@@ -91,7 +91,7 @@ class employeeClass:
         #******Buttons******
         btn_add=Button(self.root,text="Save",command=self.add,font=("goudy old style",15),bg="blue",fg="white",cursor="hand2").place(x=500,y=305,width=110,height=30)
         btn_update=Button(self.root,text="update",command=self.Update,font=("goudy old style",15),bg="green",fg="white",cursor="hand2").place(x=620,y=305,width=110,height=30)
-        btn_delete=Button(self.root,text="Delete",font=("goudy old style",15),bg="red",fg="white",cursor="hand2").place(x=740,y=305,width=110,height=30)
+        btn_delete=Button(self.root,text="Delete",command=self.delete,font=("goudy old style",15),bg="red",fg="white",cursor="hand2").place(x=740,y=305,width=110,height=30)
         btn_clear=Button(self.root,text="Clear",font=("goudy old style",15),bg="grey",fg="white",cursor="hand2").place(x=860,y=305,width=110,height=30)
 
         #*****Details of employees****
@@ -233,6 +233,31 @@ class employeeClass:
                     self.show()
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to : {str(ex)}")
+#***************Delete**********************
+    def delete(self):
+        con=sqlite3.connect(database=r'ims.db')
+        cur=con.cursor();
+        try:
+            if self.var_emp_id.get()=="":
+                messagebox.showerror("Error","Employee ID must be required",parent=self.root)
+            else:
+                cur.execute("Select * from employee where eid=?",(self.var_emp_id.get(),))
+                row=cur.fetchone()
+                if row==None:
+                    messagebox.showerror("Error","Invalid Employee ID",parent=self.root)
+                else:
+                    op=messagebox.askyesno("Confirm","Do you really want to delete",parent=self.root)
+                    if op==True:
+                        cur.execute("delete from employee where eid=?",(self.var_emp_id.get(),))
+                        con.commit()
+                        messagebox.showinfo("Delete","Employee Deleted Deleted Successfully",parent=self.root)
+                        self.show()
+            
+
+        except Exception as ex:
+            messagebox.showerror("Error",f"Error due to : {str(ex)}")
+
+
 
         
 
