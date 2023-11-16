@@ -132,10 +132,12 @@ class employeeClass:
         self.EmployeeTable.column("utype", width=100)
         self.EmployeeTable.column("address", width=100)
         self.EmployeeTable.column("salary", width=200)
-
         self.EmployeeTable.pack(fill=BOTH,expand=1)
 
+        self.show()
+
 #*************Functions*************************
+
     def add(self):
         con=sqlite3.connect(database=r'ims.db')
         cur=con.cursor();
@@ -146,12 +148,43 @@ class employeeClass:
                 cur.execute("Select * from employee where eid=?",(self.var_emp_id.get(),))
                 row=cur.fetchone()
                 if row!=None:
-                    messagebox.showerror("Error")
-
+                    messagebox.showerror("Error","This employee ID already assigned, try different",parent=self.root)
+                else:
+                    cur.execute("Insert into employee (eid,name,email,gender,contact,dob,doj,pass,utype,address,salary) values(?,?,?,?,?,?,?,?,?,?,?)",(
+                        self.var_emp_id.get(),
+                        self.var_name.get(),
+                        self.var_email.get(),
+                        self.var_gender.get(),
+                        self.var_contact.get(),
+                        self.var_dob.get(),
+                        self.var_doj.get(),
+                        self.var_pass.get(),
+                        self.var_utype.get(),
+                        self.txt_address.get('1.0',END),
+                        self.var_salary.get(),
+                    ))
+                    con.commit()
+                    messagebox.showinfo("Success","Employee added successfully",parent=self.root)
+                    self.show()
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to : {str(ex)}")
 
 
+    def show(self):
+        con=sqlite3.connect(database=r'ims.db')
+        cur=con.cursor();
+        try:
+            cur.execute("Select * from employee")
+            rows=cur.fetchall()
+            self.EmployeeTable.delete(*self.EmployeeTable.get_children())
+            for row in rows:
+                self.EmployeeTable.insert('',END,values=row)
+
+        except Exception as ex:
+            messagebox.showerror("Error",f"Error due to : {str(ex)}")
+
+    def get_data(self,ev):
+        pass
 
 if __name__=="__main__":
     root = Tk()
