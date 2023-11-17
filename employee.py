@@ -92,7 +92,7 @@ class employeeClass:
         btn_add=Button(self.root,text="Save",command=self.add,font=("goudy old style",15),bg="blue",fg="white",cursor="hand2").place(x=500,y=305,width=110,height=30)
         btn_update=Button(self.root,text="update",command=self.Update,font=("goudy old style",15),bg="green",fg="white",cursor="hand2").place(x=620,y=305,width=110,height=30)
         btn_delete=Button(self.root,text="Delete",command=self.delete,font=("goudy old style",15),bg="red",fg="white",cursor="hand2").place(x=740,y=305,width=110,height=30)
-        btn_clear=Button(self.root,text="Clear",font=("goudy old style",15),bg="grey",fg="white",cursor="hand2").place(x=860,y=305,width=110,height=30)
+        btn_clear=Button(self.root,text="Clear",command=self.clear,font=("goudy old style",15),bg="grey",fg="white",cursor="hand2").place(x=860,y=305,width=110,height=30)
 
         #*****Details of employees****
 
@@ -188,7 +188,7 @@ class employeeClass:
         f=self.EmployeeTable.focus()
         content=(self.EmployeeTable.item(f))
         row=content['values']
-        print(row)
+        #print(row)
         self.var_emp_id.set(row[0])
         self.var_name.set(row[1])
         self.var_email.set(row[2])
@@ -256,7 +256,21 @@ class employeeClass:
 
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to : {str(ex)}")
+#*******Clear-Function********
 
+    def clear(self):
+        self.var_emp_id.set("")
+        self.var_name.set("")
+        self.var_email.set("")
+        self.var_gender.set("Select")
+        self.var_contact.set("")
+        self.var_dob.set("")
+        self.var_doj.set("")
+        self.var_pass.set("")
+        self.var_utype.set("Admin")
+        self.txt_address.delete('1.0',END)
+        self.var_salary.set("")
+        self.show()
 
 
         
