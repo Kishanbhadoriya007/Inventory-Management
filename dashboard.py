@@ -15,10 +15,10 @@ class IMS:
         
 
         # ===title===
-        self.icon_title = tk.PhotoImage(file="Inventory_management/inventory.png")
-        title = tk.Label(self.root, text="Inventory Management system", image=self.icon_title, compound="left",
-                         font=("times new roman", 40, "bold"), bg="#010c48", fg="white", anchor="w", padx=20).place(
-            x=0, y=0, relwidth=1, height=70)
+        #self.icon_title = tk.PhotoImage(file="Git_and_github/Inventory-management/inventory.png")
+        #title = tk.Label(self.root, text="Inventory Management system", image=self.icon_title, compound="left",
+#                         font=("times new roman", 40, "bold"), bg="#010c48", fg="white", anchor="w", padx=20).place(
+#            x=0, y=0, relwidth=1, height=70)
         # ====button-logout
         btn_logout = tk.Button(self.root, text="Logout", font=("times new roman", 15, "bold"), bg="yellow").place(
             x=1100, y=10, height=50, width=150)
@@ -28,15 +28,15 @@ class IMS:
                                           font=("times new roman", 15), bg="#4d636c", fg="white")
         self.lbl_clock.place(x=0, y=70, relwidth=1, height=30)
         # ===left menu===
-        self.MenuLogo = Image.open("Inventory_management/logoaboveframe.png")
-        self.MenuLogo = self.MenuLogo.resize((200, 200), Image.LANCZOS)
-        self.MenuLogo = ImageTk.PhotoImage(self.MenuLogo)
+        #self.MenuLogo = Image.open("Git_and_github/Inventory-management/logoaboveframe.png")
+        #self.MenuLogo = self.MenuLogo.resize((200, 200), Image.LANCZOS)
+        #self.MenuLogo = ImageTk.PhotoImage(self.MenuLogo)
 
         LeftMenu = tk.Frame(self.root, bd=2, relief=tk.RIDGE, bg="white")
         LeftMenu.place(x=0, y=102, width=200, height=565)
 
-        lbl_menulogo = tk.Label(LeftMenu, image=self.MenuLogo)
-        lbl_menulogo.pack(side=tk.TOP, fill=tk.X)
+        #lbl_menulogo = tk.Label(LeftMenu, image=self.MenuLogo)
+        #lbl_menulogo.pack(side=tk.TOP, fill=tk.X)
 
         lbl_menu = tk.Label(LeftMenu, text="Menu", font=("times new roman",20), bg="#009688").pack(side=tk.TOP,fill=tk.X)
         btn_employee = tk.Button(LeftMenu, text="Employee",command=self.employee, font=("times new roman", 20, "bold"), bg="White",bd=3,cursor="hand2").pack(side=tk.TOP,fill=tk.X)
