@@ -37,7 +37,7 @@ class employeeClass:
         txt_search=Entry(SearchFrame,textvariable=self.var_searchtxt,font=("goudy old style",15),bg="lightblue").place(x=200,y=10)
 
         #*****button*****
-        btn_search=Button(SearchFrame,textvariable=self.var_searchby,font=("goudy old style",15),bg="#4caf49",fg="white",cursor="hand2").place(x=410,y=10,width=140,height=30)
+        btn_search=Button(SearchFrame,text="Search",command=self.search,font=("goudy old style",15),bg="#4caf49",fg="white",cursor="hand2").place(x=410,y=10,width=140,height=30)
 
         #====text====
         title=Label(self.root,text="Employee Details",font=("Goudy old style",15),bg ="blue",fg="white").place(x=50,y=100,width=1000)
@@ -170,7 +170,7 @@ class employeeClass:
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to : {str(ex)}")
 
-
+#*********Show-Function***********
     def show(self):
         con=sqlite3.connect(database=r'ims.db')
         cur=con.cursor();
@@ -251,7 +251,7 @@ class employeeClass:
                         cur.execute("delete from employee where eid=?",(self.var_emp_id.get(),))
                         con.commit()
                         messagebox.showinfo("Delete","Employee Deleted Deleted Successfully",parent=self.root)
-                        self.show()
+                        self.clear()
             
 
         except Exception as ex:
@@ -271,6 +271,27 @@ class employeeClass:
         self.txt_address.delete('1.0',END)
         self.var_salary.set("")
         self.show()
+#***********Search-Function**********
+
+    def search():
+        con=sqlite3.connect(database=r'ims.db')
+        cur=con.cursor();
+        try:
+            if self.var_searchby.get()=="Select":
+                messagebox.showerror("Error","Select search By option",parent=self.root)
+            elif self.var_searchtxt.get()=="":
+                messagebox.showerror("Error","Search Input is required",parent=self.root)
+            else:
+                cur.execute("select * from employee where " + self.var_searchby.get() + " LIKE '%" + self.var_searchtxt.get() + "%'")
+                rows=cur.fetchall()
+                if len(rows)!=0:
+                    self.EmployeeTable.delete(*self.EmployeeTable.get_children())
+                    for row in rows:
+                        self.EmployeeTable.insert('',END,values=row)
+                else:
+                    messagebox.showerror("Error","No record found!!!",parent=self.root)
+        except Exception as ex:
+            messagebox.showerror("Error",f"Error due to : {str(ex)}")
 
 
         
