@@ -35,7 +35,7 @@ class SupplierClass:
         title=Label(self.root,text="supplier Details",font=("Goudy old style",15),bg ="blue",fg="white").place(x=50,y=100,width=1000)
 
         #*****Content*****
-        #*****Row1*******
+        #*****Row1******* 
         lbl_supid=Label(self.root,text="Emp ID",font=("Goudy old style",15),bg ="White").place(x=50,y=150)
         lbl_contact=Label(self.root,text="Contact",font=("Goudy old style",15),bg ="White").place(x=800,y=150)
 
