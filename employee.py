@@ -273,7 +273,7 @@ class employeeClass:
         self.show()
 #***********Search-Function**********
 
-    def search():
+    def search(self):
         con=sqlite3.connect(database=r'ims.db')
         cur=con.cursor();
         try:

@@ -19,7 +19,7 @@ class SupplierClass:
         self.var_name=StringVar()
         #====searchFrame=====
         SearchFrame=LabelFrame(self.root,text="Search supplier",bg="White")
-        SearchFrame.place(x=250,y=20,width=600,height=70)
+        #SearchFrame.place(x=250,y=20,width=600,height=70)
 
         #====options====
         lbl_search=Label(SearchFrame,text="Search by invoice No.",bg="white",font=("times new roman",15))
@@ -31,37 +31,36 @@ class SupplierClass:
         btn_search=Button(SearchFrame,text="Search",command=self.search,font=("goudy old style",15),bg="#4caf49",fg="white",cursor="hand2").place(x=410,y=10,width=140,height=30)
 
         #====title====
-        title=Label(self.root,text="Supplier Details",font=("Goudy old style",15),bg ="blue",fg="white").place(x=50,y=100,width=1000)
+        title=Label(self.root,text="Supplier Details",font=("Goudy old style",25,"bold"),bg ="blue",fg="white").place(x=50,y=10,width=1000,height=40)
 
         #*****Content*****
         #*****Row1******* 
-        lbl_supplier_invoice=Label(self.root,text="Invoice No.",font=("Goudy old style",15),bg ="White").place(x=30,y=150)
-
-        txt_supplier_invoice=Entry(self.root,textvariable=self.var_sup_invoice,font=("Goudy old style",15),bg ="lightblue").place(x=120,y=150,width=180)
+        lbl_supplier_invoice=Label(self.root,text="Invoice No.",font=("Goudy old style",15),bg ="White").place(x=30,y=60)
+        txt_supplier_invoice=Entry(self.root,textvariable=self.var_sup_invoice,font=("Goudy old style",15),bg ="lightblue").place(x=120,y=60,width=180)
 
         #******Row2*******
 
-        lbl_name=Label(self.root,text="Name",font=("Goudy old style",15),bg ="White").place(x=50,y=190)
-        txt_name=Entry(self.root,textvariable=self.var_name,font=("Goudy old style",15),bg ="lightblue").place(x=120,y=190,width=180)
+        lbl_name=Label(self.root,text="Name",font=("Goudy old style",15),bg ="White").place(x=50,y=100)
+        txt_name=Entry(self.root,textvariable=self.var_name,font=("Goudy old style",15),bg ="lightblue").place(x=120,y=100,width=180)
 
         #******Row3*******
 
-        lbl_contact=Label(self.root,text="Contact",font=("Goudy old style",15),bg ="White").place(x=50,y=230)
+        lbl_contact=Label(self.root,text="Contact",font=("Goudy old style",15),bg ="White").place(x=50,y=140)
 
-        txt_contact=Entry(self.root,textvariable=self.var_contact,font=("Goudy old style",15),bg ="lightblue").place(x=120,y=230,width=180)
+        txt_contact=Entry(self.root,textvariable=self.var_contact,font=("Goudy old style",15),bg ="lightblue").place(x=120,y=140,width=180)
 
          #******Row4*******
 
-        lbl_desc=Label(self.root,text="Address",font=("Goudy old style",15),bg ="White").place(x=50,y=270)
+        lbl_desc=Label(self.root,text="Description",font=("Goudy old style",15),bg ="White").place(x=25,y=180)
 
         self.txt_desc=Text(self.root,font=("Goudy old style",15),bg ="lightblue")
-        self.txt_desc.place(x=120,y=270,width=300,height=60)
+        self.txt_desc.place(x=120,y=180,width=300,height=60)
     
         #******Buttons******
-        btn_add=Button(self.root,text="Save",command=self.add,font=("goudy old style",15),bg="blue",fg="white",cursor="hand2").place(x=500,y=305,width=110,height=30)
-        btn_update=Button(self.root,text="update",command=self.Update,font=("goudy old style",15),bg="green",fg="white",cursor="hand2").place(x=620,y=305,width=110,height=30)
-        btn_delete=Button(self.root,text="Delete",command=self.delete,font=("goudy old style",15),bg="red",fg="white",cursor="hand2").place(x=740,y=305,width=110,height=30)
-        btn_clear=Button(self.root,text="Clear",command=self.clear,font=("goudy old style",15),bg="grey",fg="white",cursor="hand2").place(x=860,y=305,width=110,height=30)
+        btn_add=Button(self.root,text="Save",command=self.add,font=("goudy old style",15),bg="blue",fg="white",cursor="hand2").place(x=120,y=305,width=110,height=30)
+        btn_update=Button(self.root,text="update",command=self.Update,font=("goudy old style",15),bg="green",fg="white",cursor="hand2").place(x=240,y=305,width=110,height=30)
+        btn_delete=Button(self.root,text="Delete",command=self.delete,font=("goudy old style",15),bg="red",fg="white",cursor="hand2").place(x=360,y=305,width=110,height=30)
+        btn_clear=Button(self.root,text="Clear",command=self.clear,font=("goudy old style",15),bg="grey",fg="white",cursor="hand2").place(x=480,y=305,width=110,height=30)
 
         #*****Details of suppliers****
 
@@ -145,7 +144,10 @@ class SupplierClass:
 #*********Update-Function*****************
     def Update(self):
         con=sqlite3.connect(database=r'ims.db')
-        cur=con.cursor();
+        cur = con.cursor()
+        cur.prepare("select * from supplier where invoice=?")
+        cur.execute(self.var_sup_invoice.get())
+
         try:
             if self.var_sup_invoice.get()=="":
                 messagebox.showerror("Error","Invoice no. must be required",parent=self.root)
@@ -200,7 +202,7 @@ class SupplierClass:
         self.show()
 #***********Search-Function**********
 
-    def search():
+    def search(self):
         con=sqlite3.connect(database=r'ims.db')
         cur=con.cursor();
         try:
