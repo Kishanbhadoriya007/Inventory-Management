@@ -7,6 +7,7 @@ from supplier import SupplierClass
 from sales import SalesClass
 
 print("streak 1")
+print("streak 2")
 class IMS:
     def __init__(self, root):
         self.root = root
