@@ -6,6 +6,7 @@ from category import CategoryClass
 from supplier import SupplierClass
 from sales import SalesClass
 
+print("streak 1")
 class IMS:
     def __init__(self, root):
         self.root = root
@@ -78,6 +79,8 @@ class IMS:
     def sales(self):
         self.new_win=tk.Toplevel(self.root)
         self.new_obj=SalesClass(self.new_win)
+
+#Streak
 
 
 if __name__=="__main__":
