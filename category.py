@@ -2,7 +2,7 @@ from tkinter import*
 from PIL import Image, ImageTk #pip install pillow
 from tkinter import ttk,messagebox
 import sqlite3
-
+#for streak
 class CategoryClass: 
     def __init__(self, root):
         self.root = root
